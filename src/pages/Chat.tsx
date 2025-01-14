@@ -15,9 +15,9 @@ const MOCK_GROUPS = [
 ];
 
 const MOCK_MESSAGES = [
-  { id: 1, user: "John", message: "Hey everyone!", timestamp: "10:00 AM" },
-  { id: 2, user: "Alice", message: "Hi John!", timestamp: "10:01 AM" },
-  { id: 3, user: "Bob", message: "How's everyone doing?", timestamp: "10:02 AM" },
+  { id: 1, user: "John", message: "Fala galera!", timestamp: "10:00 AM" },
+  { id: 2, user: "Alice", message: "Oi John!", timestamp: "10:01 AM" },
+  { id: 3, user: "Bob", message: "Como vocês estão?", timestamp: "10:02 AM" },
 ];
 
 const Chat = () => {
@@ -27,7 +27,7 @@ const Chat = () => {
   const handleSendMessage = () => {
     if (!message.trim()) return;
     // In a real app, this would send the message to a backend
-    console.log("Sending message:", message);
+    console.log("Enviar Mensagem:", message);
     setMessage("");
   };
 
