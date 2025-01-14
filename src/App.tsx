@@ -6,6 +6,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import Index from "./pages/Index";
 import Courses from "./pages/Courses";
 import Jobs from "./pages/Jobs";
+import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 
 const App = () => {
@@ -30,6 +31,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Jobs />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/chat" 
+            element={
+              <ProtectedRoute>
+                <Chat />
               </ProtectedRoute>
             } 
           />
