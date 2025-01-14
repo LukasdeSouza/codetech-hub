@@ -1,6 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { JobForm } from "@/components/JobForm";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const MOCK_JOBS = [
   {
@@ -28,11 +30,24 @@ const MOCK_JOBS = [
 
 const Jobs = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Job Opportunities</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">Job Opportunities</h1>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>Create Job Role</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[600px]">
+              <DialogHeader>
+                <DialogTitle>Create New Job Role</DialogTitle>
+              </DialogHeader>
+              <JobForm />
+            </DialogContent>
+          </Dialog>
+        </div>
         
         <div className="space-y-4">
           {MOCK_JOBS.map((job) => (
@@ -41,13 +56,13 @@ const Jobs = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <CardTitle>{job.title}</CardTitle>
-                    <p className="text-gray-600">{job.company}</p>
+                    <p className="text-muted-foreground">{job.company}</p>
                   </div>
                   <Button>Apply Now</Button>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="flex gap-4 text-sm text-gray-500">
+                <div className="flex gap-4 text-sm text-muted-foreground">
                   <span>{job.location}</span>
                   <span>{job.type}</span>
                 </div>
