@@ -27,23 +27,23 @@ const MOCK_COURSES = [
 
 const Courses = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <Navigation />
       
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Available Courses</h1>
+        <h1 className="text-3xl font-bold mb-8">Cursos Disponíveis</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {MOCK_COURSES.map((course) => (
-            <Card key={course.id} className="hover:shadow-md transition-shadow">
+            <Card key={course.id} className="hover:bg-slate-800 transition-all scale-95 hover:scale-100 cursor-pointer">
               <CardHeader>
                 <CardTitle>{course.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">{course.description}</p>
                 <div className="flex justify-between text-sm text-gray-500">
-                  <span>{course.level}</span>
-                  <span>{course.duration}</span>
+                  <span className="text-green-600">{course.level}</span>
+                  <span className="text-primary">{course.duration}</span>
                 </div>
               </CardContent>
             </Card>

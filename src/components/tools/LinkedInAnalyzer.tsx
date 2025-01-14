@@ -34,7 +34,7 @@ export const LinkedInAnalyzer = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-2">
-                Enter your LinkedIn profile URL
+                Cole a URL do seu Linkedin
               </label>
               <Input
                 placeholder="https://www.linkedin.com/in/yourprofile"
@@ -42,7 +42,7 @@ export const LinkedInAnalyzer = () => {
                 onChange={(e) => setLinkedinUrl(e.target.value)}
               />
             </div>
-            <Button onClick={handleAnalyze}>Analyze Profile</Button>
+            <Button onClick={handleAnalyze}>Analisar Perfil</Button>
           </div>
         </CardContent>
       </Card>
@@ -50,7 +50,7 @@ export const LinkedInAnalyzer = () => {
       {suggestions.length > 0 && (
         <Card>
           <CardContent className="pt-6">
-            <h3 className="text-lg font-medium mb-4">Suggestions for Improvement</h3>
+            <h3 className="text-lg font-medium mb-4">Sugestões de Melhoria</h3>
             <ul className="space-y-2">
               {suggestions.map((suggestion, index) => (
                 <li key={index} className="flex items-start gap-2">

@@ -11,9 +11,9 @@ export const Navigation = () => {
           <div className="flex items-center">
             <h1 
               onClick={() => navigate("/")} 
-              className="text-xl font-bold text-foreground cursor-pointer"
+              className="text-xl font-medium text-foreground cursor-pointer"
             >
-              DevLearn Hub
+              DevLearn <b>Hub</b>
             </h1>
           </div>
           <div className="flex items-center space-x-4">
@@ -22,21 +22,28 @@ export const Navigation = () => {
               onClick={() => navigate("/courses")}
               className="text-foreground hover:text-foreground/80"
             >
-              Courses
+              Cursos
             </Button>
             <Button 
               variant="ghost" 
               onClick={() => navigate("/jobs")}
               className="text-foreground hover:text-foreground/80"
             >
-              Jobs
+              Emprego
             </Button>
             <Button 
               variant="ghost" 
               onClick={() => navigate("/chat")}
               className="text-foreground hover:text-foreground/80"
             >
-              Chat
+              Chat e Comunidade
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate("/tools")}
+              className="text-foreground hover:text-foreground/80"
+            >
+              Ferramentas
             </Button>
             <Button 
               variant="default"

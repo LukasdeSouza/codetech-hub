@@ -35,14 +35,14 @@ const Jobs = () => {
       
       <main className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Job Opportunities</h1>
+          <h1 className="text-3xl font-bold">Vagas Disponíveis</h1>
           <Dialog>
             <DialogTrigger asChild>
-              <Button>Create Job Role</Button>
+              <Button>Criar Nova Vaga</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[600px]">
               <DialogHeader>
-                <DialogTitle>Create New Job Role</DialogTitle>
+                <DialogTitle>Criar uma Nova Vaga</DialogTitle>
               </DialogHeader>
               <JobForm />
             </DialogContent>
@@ -58,7 +58,7 @@ const Jobs = () => {
                     <CardTitle>{job.title}</CardTitle>
                     <p className="text-muted-foreground">{job.company}</p>
                   </div>
-                  <Button>Apply Now</Button>
+                  <Button>Candidatar-se</Button>
                 </div>
               </CardHeader>
               <CardContent>

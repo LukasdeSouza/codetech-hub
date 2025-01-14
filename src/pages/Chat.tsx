@@ -10,6 +10,8 @@ const MOCK_GROUPS = [
   { id: 2, name: "Node.js Discussions", topic: "Backend" },
   { id: 3, name: "DevOps Practices", topic: "Infrastructure" },
   { id: 4, name: "UI/UX Design", topic: "Design" },
+  { id: 5, name: "Vagas de Emprego", topic: "Vagas" },
+  { id: 6, name: "Dúvidas em Geral", topic: "Dúvidas Geral" },
 ];
 
 const MOCK_MESSAGES = [

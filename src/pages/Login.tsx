@@ -25,12 +25,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <Navigation />
       
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
-          <h1 className="text-3xl font-bold mb-8">Login to DevLearn Hub</h1>
+          <h1 className="text-3xl font-bold mb-8">Login para acessar DevLearn</h1>
           
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -41,7 +41,7 @@ const Login = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your email" type="email" {...field} />
+                      <Input placeholder="Digite seu email" type="email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -53,9 +53,9 @@ const Login = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>Senha</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your password" type="password" {...field} />
+                      <Input placeholder="Digite sua senha" type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -63,7 +63,7 @@ const Login = () => {
               />
 
               <Button type="submit" className="w-full">
-                Login
+                Entrar
               </Button>
             </form>
           </Form>
