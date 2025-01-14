@@ -9,37 +9,47 @@ import Courses from "./pages/Courses";
 import Jobs from "./pages/Jobs";
 import Login from "./pages/Login";
 
-const queryClient = new QueryClient();
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      retry: 1,
+    },
+  },
+});
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route 
-            path="/courses" 
-            element={
-              <ProtectedRoute>
-                <Courses />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/jobs" 
-            element={
-              <ProtectedRoute>
-                <Jobs />
-              </ProtectedRoute>
-            } 
-          />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route 
+              path="/courses" 
+              element={
+                <ProtectedRoute>
+                  <Courses />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/jobs" 
+              element={
+                <ProtectedRoute>
+                  <Jobs />
+                </ProtectedRoute>
+              } 
+            />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
