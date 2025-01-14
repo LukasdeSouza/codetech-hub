@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Courses from "./pages/Courses";
 import Jobs from "./pages/Jobs";
 import Chat from "./pages/Chat";
+import Tools from "./pages/Tools";
 import Login from "./pages/Login";
 
 const App = () => {
@@ -39,6 +40,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Chat />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/tools" 
+            element={
+              <ProtectedRoute>
+                <Tools />
               </ProtectedRoute>
             } 
           />
