@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { CourseForm } from "@/components/CourseForm";
 import { VideoForm } from "@/components/VideoForm";
 import { PlusCircle, Video } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const MOCK_COURSES = [
   {
@@ -79,67 +80,49 @@ const Courses = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {MOCK_COURSES.map((course) => (
-            <Card key={course.id} className="hover:bg-accent transition-all scale-95 hover:scale-100 cursor-pointer overflow-hidden">
-              <div className="aspect-video w-full overflow-hidden">
-                <img 
-                  src={course.image} 
-                  alt={course.title}
-                  className="w-full h-full object-cover transition-transform hover:scale-105"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle>{course.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">{course.description}</p>
-                <div className="flex justify-between text-sm mb-4">
-                  <span className="text-green-500">{course.level}</span>
-                  <span className="text-primary">{course.duration}</span>
+            <Link to={`/courses/${course.id}`} key={course.id}>
+              <Card className="hover:bg-accent transition-all scale-95 hover:scale-100 cursor-pointer overflow-hidden">
+                <div className="aspect-video w-full overflow-hidden">
+                  <img 
+                    src={course.image} 
+                    alt={course.title}
+                    className="w-full h-full object-cover transition-transform hover:scale-105"
+                  />
                 </div>
-                
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-semibold">Vídeos do Curso</h3>
-                    {isAdmin && (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm">
-                            <Video className="mr-2 h-4 w-4" />
-                            Adicionar Vídeo
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>Adicionar Novo Vídeo</DialogTitle>
-                          </DialogHeader>
-                          <VideoForm />
-                        </DialogContent>
-                      </Dialog>
-                    )}
+                <CardHeader>
+                  <CardTitle>{course.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">{course.description}</p>
+                  <div className="flex justify-between text-sm mb-4">
+                    <span className="text-green-500">{course.level}</span>
+                    <span className="text-primary">{course.duration}</span>
                   </div>
                   
-                  <div className="space-y-2">
-                    {course.videos.map((video) => (
-                      <div key={video.id} className="p-4 rounded-lg bg-card border">
-                        <h4 className="font-medium mb-1">{video.title}</h4>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          {video.description}
-                        </p>
-                        <div className="aspect-video w-full">
-                          <iframe
-                            src={video.videoUrl}
-                            title={video.title}
-                            className="w-full h-full rounded-lg"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        </div>
+                  {isAdmin && (
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center">
+                        <h3 className="font-semibold">Vídeos do Curso</h3>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" size="sm">
+                              <Video className="mr-2 h-4 w-4" />
+                              Adicionar Vídeo
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Adicionar Novo Vídeo</DialogTitle>
+                            </DialogHeader>
+                            <VideoForm />
+                          </DialogContent>
+                        </Dialog>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </main>
