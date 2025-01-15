@@ -1,6 +1,10 @@
 import { Navigation } from "@/components/Navigation";
 import { useParams } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 // This would typically come from your API/backend
 const MOCK_COURSES = [
@@ -46,9 +50,40 @@ const MOCK_COURSES = [
   },
 ];
 
+const Certificate = ({ course, userName }: { course: any; userName: string }) => {
+  return (
+    <div id="certificate" className="hidden">
+      <div className="bg-white p-12 text-center" style={{ width: "800px", height: "600px" }}>
+        <h1 className="text-4xl font-bold mb-8">Certificate of Completion</h1>
+        <p className="text-xl mb-8">This is to certify that</p>
+        <p className="text-3xl font-bold mb-8">{userName}</p>
+        <p className="text-xl mb-8">has successfully completed the course</p>
+        <p className="text-3xl font-bold mb-8">{course.title}</p>
+        <p className="text-xl">Date: {new Date().toLocaleDateString()}</p>
+      </div>
+    </div>
+  );
+};
+
 const CourseDetail = () => {
   const { id } = useParams();
   const course = MOCK_COURSES.find((c) => c.id === Number(id));
+  const userName = localStorage.getItem('userName') || 'Student Name'; // You should get this from your auth context
+
+  const downloadCertificate = async () => {
+    const certificateElement = document.getElementById('certificate');
+    if (!certificateElement) return;
+
+    try {
+      const canvas = await html2canvas(certificateElement);
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('l', 'mm', [297, 210]); // A4 landscape
+      pdf.addImage(imgData, 'PNG', 0, 0, 297, 210);
+      pdf.save(`${course?.title}-certificate.pdf`);
+    } catch (error) {
+      console.error('Error generating certificate:', error);
+    }
+  };
 
   if (!course) {
     return (
@@ -87,7 +122,13 @@ const CourseDetail = () => {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl font-semibold">Course Content</h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-semibold">Course Content</h2>
+              <Button onClick={downloadCertificate} variant="outline">
+                <Download className="mr-2 h-4 w-4" />
+                Download Certificate
+              </Button>
+            </div>
             {course.videos.map((video) => (
               <Card key={video.id}>
                 <CardHeader>
@@ -97,7 +138,7 @@ const CourseDetail = () => {
                   <p className="text-muted-foreground mb-4">{video.description}</p>
                   <div className="aspect-video w-full">
                     <iframe
-                      src={video.videoUrl}
+                      src={`${video.videoUrl}?controls=0`}
                       title={video.title}
                       className="w-full h-full rounded-lg"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -109,6 +150,7 @@ const CourseDetail = () => {
             ))}
           </div>
         </div>
+        <Certificate course={course} userName={userName} />
       </main>
     </div>
   );
