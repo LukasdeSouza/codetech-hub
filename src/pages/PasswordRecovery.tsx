@@ -5,24 +5,20 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { Mail, Lock } from "lucide-react";
+import { Mail } from "lucide-react";
 
-interface LoginFormValues {
+interface RecoveryFormValues {
   email: string;
-  password: string;
 }
 
-const Login = () => {
+const PasswordRecovery = () => {
   const navigate = useNavigate();
-  const form = useForm<LoginFormValues>();
+  const form = useForm<RecoveryFormValues>();
 
-  const onSubmit = (data: LoginFormValues) => {
-    // This is a mock login - in a real app, this would validate against a backend
-    if (data.email && data.password) {
-      localStorage.setItem('isAuthenticated', 'true');
-      toast.success('Successfully logged in!');
-      navigate('/courses');
-    }
+  const onSubmit = (data: RecoveryFormValues) => {
+    // Mock password recovery - in a real app, this would connect to a backend
+    toast.success('Recovery email sent! Please check your inbox.');
+    navigate('/login');
   };
 
   return (
@@ -31,7 +27,7 @@ const Login = () => {
       
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
-          <h1 className="text-3xl font-bold mb-8">Login para acessar DevLearn</h1>
+          <h1 className="text-3xl font-bold mb-8">Recuperar Senha</h1>
           
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -52,37 +48,14 @@ const Login = () => {
                 )}
               />
 
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Senha</FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Lock className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-                        <Input placeholder="Digite sua senha" type="password" className="pl-10" {...field} />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <div className="flex justify-end">
-                <Button variant="link" className="p-0" onClick={() => navigate("/password-recovery")}>
-                  Esqueceu sua senha?
-                </Button>
-              </div>
-
               <Button type="submit" className="w-full">
-                Entrar
+                Enviar Email de Recuperação
               </Button>
 
               <p className="text-center text-sm text-muted-foreground">
-                Não tem uma conta?{" "}
-                <Button variant="link" className="p-0" onClick={() => navigate("/register")}>
-                  Cadastre-se
+                Lembrou sua senha?{" "}
+                <Button variant="link" className="p-0" onClick={() => navigate("/login")}>
+                  Voltar ao login
                 </Button>
               </p>
             </form>
@@ -93,4 +66,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default PasswordRecovery;

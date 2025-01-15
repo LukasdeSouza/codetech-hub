@@ -9,6 +9,8 @@ import Jobs from "./pages/Jobs";
 import Chat from "./pages/Chat";
 import Tools from "./pages/Tools";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import PasswordRecovery from "./pages/PasswordRecovery";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/password-recovery" element={<PasswordRecovery />} />
           <Route 
             path="/courses" 
             element={
