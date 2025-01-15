@@ -9,12 +9,15 @@ export const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <h1 
-              onClick={() => navigate("/")} 
-              className="text-xl font-medium text-foreground cursor-pointer"
-            >
-              DevLearn <b>Hub</b>
-            </h1>
+            <div className="flex flex-row gap-1 items-baseline">
+              <h1 
+                onClick={() => navigate("/")} 
+                className="text-xl font-semibold text-foreground cursor-pointer"
+              >
+                CodeHub
+              </h1>
+              <small className="text-xs">by Codetech</small>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <Button 
