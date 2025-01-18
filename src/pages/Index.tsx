@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { useNavigate } from "react-router-dom";
+import { AdBanner } from "@/components/AdBanner";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -17,6 +18,10 @@ const Index = () => {
           <p className="text-xl font-light text-gray-100 mb-8">
             acesse ferramentas, se conecte com uma comunidade engajada, e ache sua próxima vaga.
           </p>
+          
+          {/* Ad Banner placed between content */}
+          <AdBanner slot="YOUR-AD-SLOT-ID" />
+          
           <div className="flex justify-center gap-4">
             <Button 
               size="lg"
@@ -48,6 +53,9 @@ const Index = () => {
               <p className="text-gray-300 font-light">Achei sua próxima oportunidade com nossa listagem de emprego.</p>
             </div>
           </div>
+          
+          {/* Another Ad Banner at the bottom */}
+          <AdBanner slot="YOUR-SECOND-AD-SLOT-ID" format="horizontal" />
         </div>
       </main>
     </div>
