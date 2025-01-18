@@ -67,7 +67,7 @@ ${skills || "Não informado."}
                   Seu nome completo:
                 </label>
                 <Textarea
-                  placeholder="Exemplo: Abraham Lincoln"
+                  placeholder="Exemplo: Harry Potter"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="min-h-[50px]"

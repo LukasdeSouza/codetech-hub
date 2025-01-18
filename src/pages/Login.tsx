@@ -44,7 +44,7 @@ const Login = () => {
                     <FormControl>
                       <div className="relative">
                         <Mail className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-                        <Input placeholder="Digite seu email" type="email" className="pl-10" {...field} />
+                        <Input placeholder="relaxa, qualquer email tá passando" type="email" className="pl-10" {...field} />
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -61,7 +61,7 @@ const Login = () => {
                     <FormControl>
                       <div className="relative">
                         <Lock className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-                        <Input placeholder="Digite sua senha" type="password" className="pl-10" {...field} />
+                        <Input placeholder="qualquer senha tá passando" type="password" className="pl-10" {...field} />
                       </div>
                     </FormControl>
                     <FormMessage />
