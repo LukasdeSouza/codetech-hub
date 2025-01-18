@@ -15,7 +15,7 @@ class JobScraperService {
   private static instance: JobScraperService;
   private firecrawl: FirecrawlApp;
   private jobSites = [
-    'https://www.linkedin.com/jobs/search?keywords=developer&location=Brazil',
+    'https://br.indeed.com/jobs?q=programador&l=Brasil&from=searchOnHP&vjk=0ae01af2a24954a3',
     'https://www.glassdoor.com.br/Vaga/brazil-developer-vagas-SRCH_IL.0,6_IN39_KO7,16.htm'
   ];
 
