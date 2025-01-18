@@ -22,7 +22,7 @@ class JobScraperService {
   constructor() {
     // In a real application, this should be in an environment variable
     this.firecrawl = new FirecrawlApp({ 
-      apiKey: 'YOUR_FIRECRAWL_API_KEY'
+      apiKey: 'fc-77fd45e9be7a4b768224943e50a6a735'
     });
   }
 
