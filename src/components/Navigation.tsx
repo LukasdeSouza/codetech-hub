@@ -20,27 +20,27 @@ export const Navigation = () => {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Button 
+            {/* <Button 
               variant="ghost" 
               onClick={() => navigate("/courses")}
               className="text-foreground hover:text-foreground/80"
             >
               Cursos
-            </Button>
-            <Button 
+            </Button> */}
+            {/* <Button 
               variant="ghost" 
               onClick={() => navigate("/jobs")}
               className="text-foreground hover:text-foreground/80"
             >
               Emprego
-            </Button>
-            <Button 
+            </Button> */}
+            {/* <Button 
               variant="ghost" 
               onClick={() => navigate("/chat")}
               className="text-foreground hover:text-foreground/80"
             >
               Chat e Comunidade
-            </Button>
+            </Button> */}
             <Button 
               variant="ghost" 
               onClick={() => navigate("/tools")}

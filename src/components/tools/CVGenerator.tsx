@@ -6,41 +6,50 @@ import { toast } from "sonner";
 
 export const CVGenerator = () => {
   const [name, setName] = useState("");
+  const [summary, setSummary] = useState("");
   const [skills, setSkills] = useState("");
-  const [time, setTime] = useState("");
   const [technologies, setTechnologies] = useState("");
+  const [projects, setProjects] = useState("");
+  const [experience, setExperience] = useState("");
+  const [education, setEducation] = useState("");
+  const [languages, setLanguages] = useState("");
   const [generatedCV, setGeneratedCV] = useState<string | null>(null);
 
   const handleGenerate = () => {
-    if (!skills.trim()) {
-      toast.error("Please enter your skills first");
+    if (!name.trim() || !summary.trim()) {
+      toast.error("Por favor, preencha seu nome e resumo profissional.");
       return;
     }
 
-    // This is a mock CV generation - in a real app, you'd call an API
     const cv = `
+**Nome Completo:** ${name}
 
-    Olá me chamo ${name} e sou um desenvolvedor de software com foco em programação e desenvolvimento de sistemas personalizados.
-    Abaixo se encontra um pouco do meu resumo profissional, das tecnologias que conheço e do tempo de estudo que tenho na área.
+**Resumo Profissional:**
+${summary}
 
-
-RESUMO PROFISSIONAL
-Profissional dedicado na área da programação, com diversas habilidades e expertise em em diferentes tecnologias.
-Tive a oportunidade de contribuir ativamente em diversos projetos, individualmente e em equipe, como:
-${skills}
-
-
-TECNOLOGIAS
-Conheço diversas tecnologias relacionadas a programação e desenvolvimento de software, não só teoricamente mas também de maneira prática 
-conforme os exemplos citados anteriormente. Utilizando essas tecnologias já construi aplicações pessoais e empresariais:
+**Habilidades Técnicas:**
 ${technologies
   .split(",")
-  .map((skill) => "• " + skill.trim())
+  .map((tech) => "• " + tech.trim())
   .join("\n")}
 
-EXPERIÊNCIA PROVISSIONAL EXPERIENCE
-Atualmente tenho ${time} de estudo na área de programação com foco em aprimorar meu conhecimento e sempre disposto a aprender.
+**Experiência Profissional:**
+${experience || "Ainda não possuo experiência profissional formal."}
 
+**Educação:**
+${education || "Não especificado."}
+
+**Projetos:**
+${projects
+  .split(",")
+  .map((proj) => "• " + proj.trim())
+  .join("\n") || "Nenhum projeto informado."}
+
+**Idiomas:**
+${languages || "Não especificado."}
+
+**Informações Adicionais:**
+${skills || "Não informado."}
     `;
 
     setGeneratedCV(cv);
@@ -58,16 +67,27 @@ Atualmente tenho ${time} de estudo na área de programação com foco em aprimor
                   Seu nome completo:
                 </label>
                 <Textarea
-                  placeholder="Abraham Lincoln"
+                  placeholder="Exemplo: Abraham Lincoln"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="min-h-[100px]"
+                  className="min-h-[50px]"
                 />
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">
-                Quais tecnologias você usa?
+                Resumo Profissional:
+              </label>
+              <Textarea
+                placeholder="Exemplo: Desenvolvedor com experiência em..."
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
+                className="min-h-[100px]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Habilidades Técnicas (separe por vírgula):
               </label>
               <Textarea
                 placeholder="Exemplo: C#, SQL, React"
@@ -78,24 +98,55 @@ Atualmente tenho ${time} de estudo na área de programação com foco em aprimor
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">
-                Quais projetos você já desenvolveu ? Seja sozinho ou em equipe.
+                Experiência Profissional:
               </label>
               <Textarea
-                placeholder="Exemplo: calculadora de IMC"
-                value={skills}
-                onChange={(e) => setSkills(e.target.value)}
+                placeholder="Exemplo: Desenvolvedor Frontend na Empresa X..."
+                value={experience}
+                onChange={(e) => setExperience(e.target.value)}
                 className="min-h-[100px]"
               />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">
-                Quando tempo de estudos você já tem ?
+                Formação Acadêmica:
               </label>
               <Textarea
-                placeholder="Exemplo: 6 meses de estudo"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+                placeholder="Exemplo: Bacharel em Ciência da Computação..."
+                value={education}
+                onChange={(e) => setEducation(e.target.value)}
                 className="min-h-[100px]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Projetos Desenvolvidos (separe por vírgula):
+              </label>
+              <Textarea
+                placeholder="Exemplo: Calculadora de IMC, Sistema de Gestão..."
+                value={projects}
+                onChange={(e) => setProjects(e.target.value)}
+                className="min-h-[100px]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">Idiomas:</label>
+              <Textarea
+                placeholder="Exemplo: Português (nativo), Inglês (avançado)"
+                value={languages}
+                onChange={(e) => setLanguages(e.target.value)}
+                className="min-h-[50px]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Informações Adicionais:
+              </label>
+              <Textarea
+                placeholder="Exemplo: Certificações, cursos, hobbies..."
+                value={skills}
+                onChange={(e) => setSkills(e.target.value)}
+                className="min-h-[50px]"
               />
             </div>
             <Button onClick={handleGenerate}>Gerar Currículo</Button>
@@ -116,7 +167,7 @@ Atualmente tenho ${time} de estudo na área de programação com foco em aprimor
                 toast.success("Currículo copiado!");
               }}
             >
-              Copiar Resultado
+              Copiar Currículo
             </Button>
           </CardContent>
         </Card>
