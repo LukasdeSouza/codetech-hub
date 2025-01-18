@@ -39,7 +39,6 @@ class JobScraperService {
       for (const site of this.jobSites) {
         const result = await this.firecrawl.crawlUrl(site, {
           limit: 10,
-          formats: ['html'],
           extractRules: {
             title: { selector: 'h2.jobTitle', type: 'text' },
             company: { selector: '.companyName', type: 'text' },
