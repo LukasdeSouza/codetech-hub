@@ -32,7 +32,7 @@ const Index = () => {
             </Button>
             <Button 
               size="lg"
-              onClick={() => navigate("/courses")}
+              onClick={() => navigate("/tools")}
               className="bg-primary hover:bg-primary/90"
             >
               Ver Ferramentas
